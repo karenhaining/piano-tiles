@@ -1,5 +1,5 @@
-/*Lab4Project.ino
- * @file   Lab4Project.ino
+/*Main.ino
+ * @file   main.ino
  *   @author    Karen Haining
  *   @author    Wayne Lai
  *   @date      10-June-2022
