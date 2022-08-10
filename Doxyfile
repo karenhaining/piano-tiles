@@ -1,0 +1,10 @@
+# Doxygen config file
+
+PROJECT_NAME        = 'Piano Tiles'
+PROJECT_BRIEF       = "Piano tiles project on Arduino Mega 2560."
+OUTPUT_DIRECTORY    = generated-docs
+OUTPUT_LANGUAGE     = English
+BRIEF_MEMBER_DISC   = YES
+REPEAT_BRIEF        = YES
+EXTRACT_ALL         = YES
+INPUT               = ./
