@@ -1,23 +1,33 @@
 name: Publish Documentation
+
+# Modified from https://ntamonsec.blogspot.com/2020/06/github-actions-doxygen-documentation.html
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
 on:
   push:
-    branches: [ "main" ]
-  workflow_dispatch:
-
-permissions:
-  contents: write
+    branches: [ main ]
 
 jobs:
-  deploy-docs:
+  build-documentation:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: ⬇️ Install Doxygen
-      run: sudo apt install -y doxygen graphviz
-    - name: ⚙️ Run Doxygen
-      run: doxygen
-    - name: 🚀 Deploy
-      uses: JamesIves/github-pages-deploy-action@v4
+    - uses: actions/checkout@v2
+    
+    # Build the HTML documentation
+    - name: Doxygen Action
+      uses: mattnotmitt/doxygen-action@v1.1.0
       with:
-        folder: generated-docs
+          doxyfile-path: ./Doxyfile
+          working-directory: .
+    
+    # Deploy the HTML documentation to GitHub Pages
+    - name: GH Pages Deployment
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./generated-docs/html
+        enable_jekyll: false
+        allow_empty_commit: false
+        force_orphan: true
+        publish_branch: gh-pages
