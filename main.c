@@ -1,4 +1,4 @@
-/*   @file      main.ino
+/*   @file      main.c
  *   @author    Karen Haining
  *   @author    Wayne Lai
  *   @date      10-June-2022
